@@ -13,4 +13,4 @@ elif marks < 70 and marks >= 40:
 else:
     grade = "Fail"
 
-print("Student get grade: ", grade)
+print("Student grade: ", grade)
