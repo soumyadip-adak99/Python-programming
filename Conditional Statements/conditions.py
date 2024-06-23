@@ -7,6 +7,6 @@ elif light == "green":
 elif light == "yellow":
     print("look")
 else:
-    print("error")
+    print("ERROR")
 
 print("End of code")
