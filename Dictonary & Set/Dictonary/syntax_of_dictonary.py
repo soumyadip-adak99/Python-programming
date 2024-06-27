@@ -14,3 +14,19 @@ print(info)
 # acsses keys in dictonary
 print(info["name"])
 print(info["adult"])
+
+# assining values
+
+info["name"] = "adak"
+print(info["name"])
+
+##
+info["surname"] = "dip"
+print(info)
+
+# we want to create empty dictonary
+
+null_dict = {}
+
+null_dict["name"] = "soumya"
+print(null_dict)
