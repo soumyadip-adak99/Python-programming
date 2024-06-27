@@ -10,3 +10,7 @@ info = {
 }
 
 print(info)
+
+# acsses keys in dictonary
+print(info["name"])
+print(info["adult"])
