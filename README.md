@@ -5,3 +5,5 @@
  </table>
 
 <h1>Python topics</h1>
+
+<h2 align="center">String</h2>
