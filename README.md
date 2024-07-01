@@ -3,11 +3,3 @@
 </p>
 
  </table>
-
-<h1>Python topics</h1>
-
-<h2 align="center">String</h2>
-<h3><u>String function</u></h3>
-
-1. string.cpitalize() = Capitaize first character.
-2. string.count() = count the occurence of substring.
