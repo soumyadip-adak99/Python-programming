@@ -10,9 +10,30 @@
     <th>Answer</th>
   </tr>
 
+  <!--1-->
+  <tr>
+	<td align="center">1</td>
+    <td align="center">Capitalize first character of a string (using .capitalize function)</td>
+    <td align="center"><a href="https://github.com/adak99/Python-programming/blob/main/Strings/String%20Function/String_capitalize_function.py">Answer</a></td>
+  </tr>
+  <!--2-->
+  <tr>
+	<td align="center">2</td>
+    <td align="center">Count the occurence of substring (using .count function)</td>
+    <td align="center"><a href="https://github.com/adak99/Python-programming/blob/main/Strings/String%20Function/String_count_function.py">Answer</a></td>
+  </tr>
+  <!--3-->
+   <tr>
+	<td align="center">3</td>
+    <td align="center">Retrun true if string endswith substring (using .endswith function)</td>
+    <td align="center"><a href="https://github.com/adak99/Python-programming/blob/main/Strings/String%20Function/String_endswithFunction.py">&</a>Answer</td>
+  </tr>
+
 <!--&&&-->
    <tr>
 	<td align="center">$</td>
     <td align="center">--------------------------------------------------------------------------------------------------</td>
     <td align="center"><a href="">&</a></td>
   </tr>
+
+</table>
