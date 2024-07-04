@@ -47,5 +47,25 @@
     <td align="center">--------------------------------------------------------------------------------------------------</td>
     <td align="center"><a href="">&</a></td>
   </tr>
-
 </table>
+
+<!--Loops-->
+<h1 align="center">Loops</h1>
+<table width="100%" border="2px solid black" align="center">
+  <tr width="100%" border="2px solild black">
+    <th>No</th>
+    <th>Quesiton</th>
+    <th>Answer</th>
+  </tr>
+  <!--question no 1-->
+  <tr width="100%">
+    <td align="center">1</td>
+    <td align="center">For loop</td>
+    <td align="center"><a href="https://github.com/adak99/Python-programming/blob/main/Loops%2Ffor_loop.py">Answer</a></td>
+  </tr>
+  <!--question number 2-->
+  <tr>
+   <td align="center">2</td>
+    <td align="center">While loop</td>
+    <td align="center"><a href="https://github.com/adak99/Python-programming/blob/main/Loops%2Fwhile_loop.py">Answer</a></td>
+  </tr>
