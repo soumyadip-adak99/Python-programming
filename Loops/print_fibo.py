@@ -1,14 +1,23 @@
 # print fibonacci serise
 
-n = int(input("Input a number: "))
+n = int(input("Enter a number: "))
 
-a, b = 0, 1
+a = 0
+b = 1
 c = 0
 
-print("Fibonacci serise: {} {}".format(a, b), end=" ")
-
-for i in range(n - 2):
+print("Fibonacci serise: {} {}".format(a, b), end="")
+# using for loop
+for i in range(1, n - 2):
     c = a + b
-    print("{}".format(c), end=" ")
+    print("{},".format(c), end="")
     a = b
     b = c
+# using while loop
+i = 1
+while i <= n - 2:
+    c = a + b
+    print(" {}".format(c), end="")
+    a = b
+    b = c
+    i += 1
