@@ -1,22 +1,20 @@
-def tower_of_hanoi(n, scroce, helper, destination):
+def tower_of_hanoi(n, scorce, helper, destination):
     if n == 1:
-        print(f"{n} move from {scroce} to {destination}")
+        print(f"stack {n} move {scorce} to {destination}")
         return
 
-    # n-1 -> scorce = scorce , helper = destination, destination = helper
-    tower_of_hanoi(n - 1, scroce, destination, helper)  # first part
-    # print statement
-    print(f"{n} move from {scroce} to {destination}")
-    # n == n -> scorce = helper, helper = scorce, destionation = destionaton
-    tower_of_hanoi(n - 1, helper, scroce, destination)  # second part
+    # if n - 1 = 2 then stack move scorce
+    tower_of_hanoi(n - 1, scorce, destination, helper)  # first step count from n -1
+    print(f"stack {n} move {scorce} to {destination}")
+    tower_of_hanoi(n - 1, helper, scorce, destination)  # second part count from n - 1
 
 
 def main():
     n = 3
-    scroce = "scroce"
-    helper = "helper"
+    scorce = "scorce"
+    helper = "hlper"
     destination = "destination"
-    tower_of_hanoi(n, scroce, helper, destination)
+    tower_of_hanoi(n, scorce, helper, destination)
 
 
 if __name__ == "__main__":
