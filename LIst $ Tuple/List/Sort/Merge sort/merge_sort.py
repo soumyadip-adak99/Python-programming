@@ -1,51 +1,40 @@
-def conquer(arr, s_index, mid, e_index):
-    merged_arr = [0] * (e_index - s_index + 1)
-    index1 = s_index
-    index2 = mid + 1
-    x = 0
+def concqure(left, right):
+    merged_array = []
 
-    while index1 <= mid and index2 <= e_index:
-        if arr[index1] <= arr[index2]:
-            merged_arr[x] = arr[index1]
-            index1 += 1
+    i = j = 0
+
+    while i < len(left) and j < len(right):
+        if left[i] < right[j]:
+            merged_array.append(left[i])
+            i += 1
         else:
-            merged_arr[x] = arr[index2]
-            index2 += 1
-        x += 1
+            merged_array.append(right[j])
+            j += 1
 
-    while index1 <= mid:
-        merged_arr[x] = arr[index1]
-        index1 += 1
-        x += 1
+    while i < len(left):
+        merged_array.append(left[i])
+        i += 1
 
-    while index2 <= e_index:
-        merged_arr[x] = arr[index2]
-        index2 += 1
-        x += 1
+    while j < len(right):
+        merged_array.append(right[j])
+        j += 1
 
-    for i in range(len(merged_arr)):
-        arr[s_index + i] = merged_arr[i]
+    return merged_array
 
 
-def divide(arr, s_index, e_index):
-    if s_index >= e_index:
-        return
+def divide(arr):
+    if len(arr) == 1:
+        return arr
 
-    mid = s_index + (e_index - s_index) // 2
-    divide(arr, s_index, mid)
-    divide(arr, mid + 1, e_index)
-    conquer(arr, s_index, mid, e_index)
+    mid = len(arr) // 2
 
+    left = divide(arr[:mid])
+    right = divide(arr[mid:])
 
-def main():
-    arr = [6, 3, 9, 5, 2, 8]
-    size = len(arr)
-
-    divide(arr, 0, size - 1)
-
-    for i in range(len(arr)):
-        print(arr[i], end=" ")
+    return concqure(left, right)
 
 
 if __name__ == "__main__":
-    main()
+    arr = [5, 4, 3, 2, 1]
+    result = divide(arr)
+    print(result)
