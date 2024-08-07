@@ -1,40 +1,40 @@
-def concqure(left, right):
-    merged_array = []
+def conqcure(left, right):
+    new_arr = []
 
     i = j = 0
 
     while i < len(left) and j < len(right):
         if left[i] < right[j]:
-            merged_array.append(left[i])
+            new_arr.append(left[i])
             i += 1
         else:
-            merged_array.append(right[j])
+            new_arr.append(right[j])
             j += 1
 
-    while i < len(left):
-        merged_array.append(left[i])
+    while (i < len(left)):
+        new_arr.append(left[i])
         i += 1
 
-    while j < len(right):
-        merged_array.append(right[j])
+    while (j < len(right)):
+        new_arr.append(right[j])
         j += 1
 
-    return merged_array
+    return new_arr
 
 
-def divide(arr):
+def divided(arr):
     if len(arr) == 1:
         return arr
 
     mid = len(arr) // 2
 
-    left = divide(arr[:mid])
-    right = divide(arr[mid:])
+    left = divided(arr[:mid])
+    right = divided(arr[mid:])
 
-    return concqure(left, right)
+    return conqcure(left, right)
 
 
 if __name__ == "__main__":
-    arr = [5, 4, 3, 2, 1]
-    result = divide(arr)
-    print(result)
+    arr = [5, 3, 4, 1, 2]
+    ans = divided(arr)
+    print(ans)
