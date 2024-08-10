@@ -1,2 +1,0 @@
-
-    right = divide(arr[mid:])
