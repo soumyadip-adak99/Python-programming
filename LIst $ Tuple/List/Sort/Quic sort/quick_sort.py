@@ -3,29 +3,30 @@ def partition(arr, low, high):
     i = low - 1
 
     for j in range(low, high):
-        if arr[j] < pivot:
+        if arr[j] <= pivot:
             i += 1
-            # swaping
-            temp = arr[i]
-            arr[i] = arr[j]
-            arr[j] = temp
+            arr[i], arr[j] = arr[j], arr[i]
 
-    i += 1
-    temp = arr[i]
-    arr[i] = pivot
-    arr[high] = temp
-    return i
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    return i + 1
 
 
 def quick_sort(arr, low, high):
     if low < high:
-        pivot_idx = partition(arr, low, high)
+        pi = partition(arr, low, high)
 
-        quick_sort(arr, low, pivot_idx - 1)
-        quick_sort(arr, pivot_idx + 1, high)
+        quick_sort(arr, low, pi - 1)
+        quick_sort(arr, pi + 1, high)
 
 
 if __name__ == "__main__":
-    arr = [6, 2, 1, 3, 5, 4]
+    size = int(input("Enter the size of the array: "))
+    arr = []
+
+    # Enter array elements by the user
+    print("Enter the elements of the array: ")
+    for _ in range(size):
+        arr.append(int(input()))
+
     quick_sort(arr, 0, len(arr) - 1)
-    print(*arr)
+    print("Sorted array elements:", *arr)
