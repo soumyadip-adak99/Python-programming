@@ -23,7 +23,6 @@ if __name__ == "__main__":
     size = int(input("Enter the size of the array: "))
     arr = []
 
-    # Enter array elements by the user
     print("Enter the elements of the array: ")
     for _ in range(size):
         arr.append(int(input()))
