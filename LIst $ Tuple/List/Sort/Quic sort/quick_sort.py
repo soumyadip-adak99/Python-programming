@@ -7,8 +7,10 @@ def partition(arr, low, high):
             i += 1
             arr[i], arr[j] = arr[j], arr[i]
 
-    arr[i + 1], arr[high] = arr[high], arr[i + 1]
-    return i + 1
+    i += 1
+    arr[i], arr[high] = arr[high], arr[i]
+
+    return i
 
 
 def quick_sort(arr, low, high):
