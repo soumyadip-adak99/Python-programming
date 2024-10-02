@@ -1,25 +1,19 @@
-a = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-]
-b = [[0 for _ in range(len(a))] for _ in range(len(a))]
+def copy_arr_elements(a, b):
+    print("Original array:",a) #print original arrya
 
-#copy 2D array elements
-for i in range(len(a)):
-    for j in range(len(a)):
-        b[i][j] = a[i][j]
+    #copy arr
+    for i in range(len(a)):
+        for j in range(len(a[i])):
+            b[i][j] = a[i][j]
 
-# print array of A
-print("Array of A:")
-for i in range(len(a)):
-    for j in range(len(a)):
-        print(f"{a[i][j]}",end="")
-    print()
+    print("Copy array:",b) #print copy array
 
-#print array of b
-print("Array of A:")
-for i in range(len(a)):
-    for j in range(len(a)):
-        print(f"{b[i][j]}", end="")
-    print()
+if __name__ == "__main__":
+    a = [
+        [1, 2, 3, 4],
+        [4, 5, 6, 7],
+        [8, 9, 0, 1]
+    ]
+    b = [[0 for _ in range(len(a[0]))] for _ in range(len(a))]
+
+    copy_arr_elements(a, b)
