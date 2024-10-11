@@ -39,7 +39,7 @@ class Linklist:
         self.size -= 1
         self.head = self.head.next
 
-    def delete_last(self):
+    def delete_last(self): #delete last
         if self.head is None:
             print("This list is empty.")
             return
@@ -58,10 +58,10 @@ class Linklist:
         second_last_node.next = None
 
 
-    def get_size(self):
+    def get_size(self): #get size
         return self.size
 
-    def print_list(self):
+    def print_list(self): #print list
         if self.head is None:
             print("This list is empty.")
             return
