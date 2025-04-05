@@ -6,7 +6,7 @@ def week_chart(remainder: int) -> str:
         3: "Wednesday",
         4: "Thursday",
         5: "Friday",
-        6: "Saturday"
+        6: "Saturday",
     }
     return week_days.get(remainder, "Invalid day")
 
@@ -34,12 +34,7 @@ def century_chart(year: int) -> int:
     century = year // 100
     remainder = century % 4
 
-    century_code = {
-        0: 6,
-        1: 4,
-        2: 2,
-        3: 0
-    }
+    century_code = {0: 6, 1: 4, 2: 2, 3: 0}
     return century_code.get(remainder, 0)
 
 
