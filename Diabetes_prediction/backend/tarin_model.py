@@ -6,9 +6,12 @@ from sklearn.model_selection import train_test_split
 import pickle
 
 # Load dataset
-url = "https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv"
-columns = ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness',
-           'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age', 'Outcome']
+url = "data.csv"
+columns = [
+    'Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin',
+    'BMI', 'DiabetesPedigreeFunction', 'Age', 'Outcome'
+]
+
 df = pd.read_csv(url, names=columns)
 
 # Prepare data
