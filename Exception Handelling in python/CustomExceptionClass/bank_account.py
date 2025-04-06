@@ -12,5 +12,5 @@ class Bank:
         self.balance -= amount
         return f"Withdrawn: {amount}. Remaining balance: {self.balance}"
 
-    def get_balance(self) -> float:  # Removed type hint on self
+    def get_balance(self) -> float:
         return self.balance
