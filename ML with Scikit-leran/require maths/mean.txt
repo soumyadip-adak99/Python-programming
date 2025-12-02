@@ -1,0 +1,49 @@
+60, 70,80,80,85,90,100,120
+7 students
+
+overall average ?
+middle student ?
+score appeared ?
+
+mean = (x1 + x2 + ......xn) / n
+meadian = middle (if odd count), even middle 2 average
+mode = most repeated value
+
+______________________________
+q1-> score 10, 20 ,30
+
+mean
+add = 10 + 20 + 30 = 60
+total value = 3
+mean =  60 / 3 = 20
+
+meadian =  20
+
+mode = all values are unique, no mode is found
+_______________________
+q2-> 50, 70, 70, 45, 76,99,88
+
+mean = [
+            add = 50+70+70+45+76+99+88 = 498
+            total value = 7
+            mean = 498 / 7
+                 = 71.14...
+       ]
+
+meadian = odd count data
+    sort the data = 45, 50, 70,70, 76, 88, 98
+       formula is               n + 1
+                    meadian = ---------
+                                  2
+
+                                7 + 1
+                    meadian = ---------
+                                  2
+
+                                8
+                           = --------- = 4 (4th position number is data that is the answer)
+                                2
+
+                    answer =  70
+mode = 70
+
