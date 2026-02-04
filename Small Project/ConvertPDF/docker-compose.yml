@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  pdf-converter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pdf-converter
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./uploads:/app/uploads
+      - ./outputs:/app/outputs
+    environment:
+      - FLASK_ENV=production
+    restart: unless-stopped

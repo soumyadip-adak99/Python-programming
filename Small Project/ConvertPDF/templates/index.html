@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>File to PDF Converter</h1>
+        <p class="subtitle">Upload any file to convert it to PDF</p>
+
+        <!-- Upload Area -->
+        <div class="upload-box" id="uploadBox">
+            <div class="upload-icon">📁</div>
+            <p>Drag & drop your file here</p>
+            <span>or click to browse</span>
+            <input type="file" id="fileInput" accept=".png,.jpg,.jpeg,.gif,.bmp,.webp,.txt,.docx,.html" hidden>
+        </div>
+
+        <!-- File Info (Hidden by default) -->
+        <div class="file-info" id="fileInfo">
+            <span class="file-name" id="fileName"></span>
+            <span class="file-size" id="fileSize"></span>
+            <button class="remove-btn" id="removeBtn">✕</button>
+        </div>
+
+        <!-- Progress (Hidden by default) -->
+        <div class="progress-box" id="progressBox">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span id="progressText">Converting...</span>
+        </div>
+
+        <!-- Convert Button -->
+        <button class="convert-btn" id="convertBtn" disabled>Convert to PDF</button>
+
+        <!-- Success (Hidden by default) -->
+        <div class="success-box" id="successBox">
+            <div class="success-icon">✓</div>
+            <p>Conversion Complete!</p>
+            <a class="download-btn" id="downloadBtn" href="#">Download PDF</a>
+            <button class="reset-btn" id="resetBtn">Convert Another</button>
+        </div>
+
+        <!-- Supported Formats -->
+        <div class="formats">
+            <span>Supported: PNG, JPG, GIF, BMP, WebP, TXT, DOCX, HTML</span>
+        </div>
+    </div>
+
+    <script>
+        const uploadBox = document.getElementById('uploadBox');
+        const fileInput = document.getElementById('fileInput');
+        const fileInfo = document.getElementById('fileInfo');
+        const fileName = document.getElementById('fileName');
+        const fileSize = document.getElementById('fileSize');
+        const removeBtn = document.getElementById('removeBtn');
+        const convertBtn = document.getElementById('convertBtn');
+        const progressBox = document.getElementById('progressBox');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        const successBox = document.getElementById('successBox');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const resetBtn = document.getElementById('resetBtn');
+
+        let selectedFile = null;
+
+        uploadBox.addEventListener('click', () => fileInput.click());
+
+        uploadBox.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadBox.classList.add('dragover');
+        });
+
+        uploadBox.addEventListener('dragleave', () => {
+            uploadBox.classList.remove('dragover');
+        });
+
+        uploadBox.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadBox.classList.remove('dragover');
+            if (e.dataTransfer.files.length > 0) {
+                handleFile(e.dataTransfer.files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0]);
+            }
+        });
+
+        function handleFile(file) {
+            selectedFile = file;
+            fileName.textContent = file.name;
+            fileSize.textContent = formatSize(file.size);
+            uploadBox.style.display = 'none';
+            fileInfo.style.display = 'flex';
+            convertBtn.disabled = false;
+            successBox.style.display = 'none';
+        }
+
+        function formatSize(bytes) {
+            if (bytes === 0) return '0 B';
+            const k = 1024;
+            const sizes = ['B', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+        }
+
+        removeBtn.addEventListener('click', resetUpload);
+
+        function resetUpload() {
+            selectedFile = null;
+            fileInput.value = '';
+            uploadBox.style.display = 'flex';
+            fileInfo.style.display = 'none';
+            progressBox.style.display = 'none';
+            successBox.style.display = 'none';
+            convertBtn.disabled = true;
+            convertBtn.style.display = 'block';
+            progressFill.style.width = '0%';
+        }
+
+        convertBtn.addEventListener('click', async () => {
+            if (!selectedFile) return;
+
+            convertBtn.style.display = 'none';
+            fileInfo.style.display = 'none';
+            progressBox.style.display = 'block';
+            progressFill.style.width = '0%';
+
+            const formData = new FormData();
+            formData.append('file', selectedFile);
+
+            try {
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += Math.random() * 20;
+                    if (progress > 90) progress = 90;
+                    progressFill.style.width = progress + '%';
+                }, 200);
+
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                clearInterval(interval);
+                const data = await response.json();
+
+                if (data.success) {
+                    progressFill.style.width = '100%';
+                    setTimeout(() => {
+                        progressBox.style.display = 'none';
+                        successBox.style.display = 'block';
+                        downloadBtn.href = data.download_url;
+                    }, 300);
+                } else {
+                    throw new Error(data.error || 'Conversion failed');
+                }
+            } catch (error) {
+                progressBox.style.display = 'none';
+                uploadBox.style.display = 'flex';
+                convertBtn.style.display = 'block';
+                convertBtn.disabled = true;
+                alert('Error: ' + error.message);
+            }
+        });
+
+        resetBtn.addEventListener('click', resetUpload);
+    </script>
+</body>
+
+</html>
