@@ -27,7 +27,7 @@ COPY . .
 RUN mkdir -p uploads outputs
 
 # Expose port
-EXPOSE 5001
+EXPOSE 5002
 
 # Set the entrypoint
-CMD ["gunicorn", "--bind", "0.0.0.0:5001", "--workers", "2", "--threads", "4", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5002", "--workers", "2", "--threads", "4", "app:app"]

@@ -3,25 +3,25 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Virtual environments
+# Virtual environment
 venv/
 env/
 .venv/
 
 # IDE
-.vscode/
 .idea/
-
-# Uploads and outputs (keep directories but ignore contents)
-uploads/*
-outputs/*
-!uploads/.gitkeep
-!outputs/.gitkeep
-
-# Logs
-*.log
+.vscode/
+*.swp
+*.swo
 
 # OS
 .DS_Store
 Thumbs.db
-.venv
+
+# Application directories
+uploads/
+outputs/
+
+# Environment files
+.env
+*.env.local

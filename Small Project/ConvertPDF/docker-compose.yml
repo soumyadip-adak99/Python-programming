@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: pdf-converter
     ports:
-      - "5001:5001"
+      - "5002:5002"
     volumes:
       - ./uploads:/app/uploads
       - ./outputs:/app/outputs
