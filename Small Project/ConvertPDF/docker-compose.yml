@@ -5,9 +5,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: pdf-converter
+    container_name: pdf-tools
     ports:
-      - "5002:5002"
+      - "5001:5001"
     volumes:
       - ./uploads:/app/uploads
       - ./outputs:/app/outputs

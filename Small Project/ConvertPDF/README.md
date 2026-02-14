@@ -1,53 +1,46 @@
-# PDF Converter - Python Flask
+# PDF Tools - iLovePDF Style
 
-A simple file to PDF converter built with Python Flask.
+A full-featured PDF toolkit built with Python Flask, inspired by iLovePDF.
 
 ## Features
 
-- **File Conversion**: Convert images (PNG, JPG, GIF, BMP, WebP), text files, DOCX, and HTML to PDF
-- **Drag & Drop Upload**: User-friendly interface with drag-and-drop support
-- **Automatic Cleanup**: PDFs are automatically deleted every 7 minutes
-- **Download & Delete**: Files are automatically removed from server after download
-- **50MB File Limit**: Supports files up to 50MB
-
-## Tech Stack
-
-- **Backend**: Python 3.11, Flask 3.0
-- **PDF Generation**: img2pdf, Pillow, python-docx, reportlab
-- **Frontend**: HTML, CSS, JavaScript (Jinja2)
-- **Production Server**: Gunicorn
+| Tool | Description |
+|------|-------------|
+| **Convert to PDF** | Images, DOCX, TXT, HTML, Excel, PowerPoint → PDF |
+| **Merge PDFs** | Combine multiple PDFs into one |
+| **Split PDF** | Extract specific pages (e.g., 1,3,5-7) |
+| **Compress PDF** | Reduce file size (3 quality levels) |
+| **Rotate PDF** | Rotate pages 90°, 180°, 270° |
+| **PDF to Image** | Convert PDF pages to JPG/PNG (requires Poppler) |
 
 ## Quick Start
 
 ### Prerequisites
-
 - Python 3.9+
 - pip
 
-### Run Locally
+### Install & Run
 
 ```bash
-# Clone and navigate to project
 cd ConvertPDF
 
 # Create virtual environment
-python -m venv venv
-venv\Scripts\activate  # Windows
-# source venv/bin/activate  # Linux/Mac
+python -m venv .venv
+.venv\Scripts\activate  # Windows
+# source .venv/bin/activate  # Linux/Mac
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Run the app
+# Run
 python app.py
 ```
 
-The application will be available at `http://localhost:5002`
+Open: **http://localhost:5001**
 
 ### Docker
 
 ```bash
-# Build and run with Docker Compose
 docker-compose up --build
 ```
 
@@ -56,25 +49,22 @@ docker-compose up --build
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | GET | `/` | Web interface |
-| POST | `/upload` | Upload and convert file |
-| GET | `/download/<filename>` | Download PDF |
+| GET | `/api/tools` | List available tools |
+| POST | `/api/convert` | Convert file to PDF |
+| POST | `/api/merge` | Merge multiple PDFs |
+| POST | `/api/split` | Split PDF by pages |
+| POST | `/api/compress` | Compress PDF |
+| POST | `/api/rotate` | Rotate PDF pages |
+| POST | `/api/pdf-to-image` | PDF to images (ZIP) |
+| POST | `/api/pdf-info` | Get PDF page count |
 | GET | `/health` | Health check |
 
-## Project Structure
+## Tech Stack
 
-```
-ConvertPDF/
-├── app.py              # Main Flask application
-├── requirements.txt    # Python dependencies
-├── templates/
-│   └── index.html      # Frontend template
-├── static/
-│   └── style.css       # Styling
-├── uploads/            # Temporary upload folder
-├── outputs/            # Generated PDFs
-├── Dockerfile
-└── docker-compose.yml
-```
+- **Backend**: Python 3.11, Flask 3.0
+- **PDF Tools**: PyPDF2, img2pdf, reportlab, pdf2image
+- **Document Support**: python-docx, openpyxl, python-pptx
+- **Frontend**: HTML, CSS, JavaScript
 
 ## License
 

@@ -8,10 +8,11 @@ ENV PYTHONUNBUFFERED=1
 # Set work directory
 WORKDIR /app
 
-# Install system dependencies
+# Install system dependencies (including poppler for pdf2image)
 RUN apt-get update && apt-get install -y \
     gcc \
     libffi-dev \
+    poppler-utils \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements first for better caching
@@ -27,7 +28,7 @@ COPY . .
 RUN mkdir -p uploads outputs
 
 # Expose port
-EXPOSE 5002
+EXPOSE 5001
 
 # Set the entrypoint
-CMD ["gunicorn", "--bind", "0.0.0.0:5002", "--workers", "2", "--threads", "4", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5001", "--workers", "2", "--threads", "4", "app:app"]
